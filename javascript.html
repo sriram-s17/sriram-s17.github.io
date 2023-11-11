@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javascript workouts</title>
+        <meta name="author" content="Sriram">
+        <meta name="description" content="Javascript workouts while learning from mdn">
+        <meta name="viewport" content="width=device-width">
+    </head>
+    <body>
+        <p id="p1"></p>
+        <p id="p2"></p>
+        <p id="p3"></p>
+        <p id="p4"></p>
+        <p id="p5"></p>
+        <p id="p6"></p>
+        <script>
+            //alert(`hello, ${prompt('Enter your name')}`);
+
+            let arrayvar = ['heloo','hi',17];
+            document.querySelector('#p1').innerHTML = typeof arrayvar + " (array) - " + arrayvar + " <br>individual value = " + arrayvar[0];
+
+            let objectvar = {name:'sriram', age:12, gender:'male'};
+            document.querySelector('#p2').innerHTML = typeof objectvar + " - " + objectvar + " <br>individual value = " + objectvar.gender;
+
+            const constarray = [120,12,12];
+            constarray[0]=21;
+            document.querySelector('#p3').innerHTML = "constant array value change - " + constarray[0];
+
+            const constobj = {name:'ram'};
+            constobj.name = 'sriram';
+            document.querySelector('#p4').innerHTML = "constant object value change - " + constobj.name;
+            
+            const constvar = 'I am a constant value';
+            createpara(constvar);
+            
+            let name="sriram";
+            createpara(name);
+            
+            name=12;
+            createpara(name);
+
+            let booleanvar = 6>2;
+            createpara(booleanvar);
+
+            function createpara(variable){
+                let p = document.createElement('p');
+                document.body.appendChild(p);
+                p.innerHTML = typeof variable + " - " + variable;
+            }
+        </script>
+    </body>
+</html>
