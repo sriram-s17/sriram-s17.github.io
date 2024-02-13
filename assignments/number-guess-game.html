@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="Sriram">
+        <meta name="description" content="A number guessing game from mdn">
+        <meta name="viewport" content="width=device-width">
+
+        <style>
+            html{
+                font-family:'monospace';
+            }
+
+            body{
+                width:50%;
+                margin:0 auto;
+                min-width:400px;
+            }
+
+            input[type='number']{
+                padding: 3px;
+                border:2px solid rgba(155, 155, 155, 0.9);
+                width:120px;
+            }
+            
+            #result{
+                color:white;
+                padding:5px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Number Guessing Game</h1>
+        <p>Guess the number we have choosed between 1 and 100. You have 10 chances to try. If you exhaust all chances, the game will over and you can start a new game. All the best</p>
+
+        <label for="guessinput">Enter the guessed number : </label>
+        <input type="number" min="1" max="100" required id="guessinput">
+        <button type="submit" id="submitbutton">submit value</button>
+
+        <div id="resultdiv">
+            <p id="previousguess"></p>
+            <p id="result"></p>
+            <p id="loworhigh"></p>
+        </div>
+        <script>
+            
+            const guessinput = document.querySelector('#guessinput');
+            const submitbutton = document.querySelector('#submitbutton');
+
+            const resultdiv = document.querySelector('#resultdiv');
+            const previousguess = document.querySelector('#previousguess');
+            const result = document.querySelector('#result');
+            const loworhigh = document.querySelector('#loworhigh');
+
+            let randomnumber = Math.floor(Math.random()*100)+1;
+            let guesscount = 1;
+
+            guessinput.focus();
+
+            function checkguess(){
+                const enteredvalue = Number(guessinput.value);
+                if(guesscount===1){
+                    previousguess.textContent="Previous Guess : ";
+                }
+                previousguess.textContent += enteredvalue + ' ';
+
+                if(enteredvalue === randomnumber){
+                    result.textContent="!! Congrats !! you have correctly guessed";
+                    result.style.backgroundColor = "green";
+                    endgame();
+                }else if(guesscount === 10){
+                    result.textContent = "!! GAME OVER !!";
+                    result.style.backgroundColor="red";
+                    
+                    endgame();
+                }else{
+                    result.textContent="!! Retry"
+                    result.style.backgroundColor="orange";
+                    if(enteredvalue > randomnumber){
+                        loworhigh.textContent="Your guessing is too high";
+                    }else{
+                        loworhigh.textContent="Your guessing is too low";
+                    }
+                    guesscount++;
+                }
+                guessinput.value='';
+                guessinput.focus();
+            }
+            submitbutton.addEventListener('click',checkguess);
+
+            let newbutton = document.createElement('button');
+            newbutton.textContent="start new game";
+
+            function endgame(){
+                document.body.append(newbutton);
+
+
+                guessinput.disabled = true;
+                submitbutton.disabled = true;
+
+                loworhigh.textContent="";
+            }
+
+            function newbuttonfunc(){
+                guessinput.disabled = false;
+                submitbutton.disabled = false;
+                guessinput.focus();
+
+                result.style.backgroundColor="white";
+
+                guesscount=1;
+                randomnumber = Math.floor(Math.random()*100) + 1;
+
+                let insideresultdivs = resultdiv.children;    //Element property; childNodes - Node property
+                for(const insideresultdiv of insideresultdivs){
+                    insideresultdiv.textContent="";
+                }
+                
+                newbutton.remove();  //Element property
+            }
+            newbutton.addEventListener('click', newbuttonfunc);
+        </script>
+    </body>
+</html>
