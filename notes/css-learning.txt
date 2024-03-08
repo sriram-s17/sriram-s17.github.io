@@ -1,0 +1,141 @@
+notes:
+    about inline elements
+        - it has padding in all sides but top and bottom doesnt take real space. but when we border it, the border also covers takes top and bottom padding
+        but it is collapsed with other elements. margin only take left and right space, it doesnt take top and bottom space like padding.
+
+        - width and height does not work in it
+    
+    about block element:
+        - width:% can be used to alter its width so next element appear right to it
+
+CSS responsiveness:
+    meta viewport is used to set width of the page to maximum of device width. if it is not set then width is set to large size in mobile device
+
+    There is a concept that physical pixel and logical pixel. physical pixel is the true resolution of a device screen.
+    while logical pixel is combination of more physical pixel to display as 1 pixel bcoz to support same size in all mobile devices.
+    devicePixelRatio is used to check ratio relation between them
+
+    units:
+        absolute units: px, cm, mm, in, pt
+        relative units: 
+            em(1 times my parent element's font-size) - it is relative to parent but fixed on all screen if parent font-size is fixed
+            rem(root element's font-size) 
+            vw, vh, (1% of viewport) change pixel according to screen viewport size
+            %
+
+CSS properties and values:
+    /* ... */ - comment
+    
+    scroll-behavior: (auto|smooth)
+    cursor: (pointer | progress | move | col-resize | etc.)
+
+    display: (block | inline | none) - sets the display mode of an element
+    visibility: (hidden | visible) - hide or show element but takes space even when it is hidden but display:none removes the element, dont take any space
+    width : size(px, em, %)
+    height : size
+    background-color : color - the color behind an element's content and padding
+    color : (rgb(0,0,0) | rgba(0,0,0,0.1) | colorname | #000(hexcode) )
+    border : size(px,em) style color
+    box-sizing:(border-box|content-box(default)) - width/height+border+padding=actual width/height - if border-box, then actual width = width
+    
+    position: (static(default)|relative|absolute|fixed|sticky)
+        top, bottom, left, right - size is used to position element
+    z-index:(numbervalue) - used to set overlap layer position - used for position and flex properties
+    overflow: (visible|hidden|scroll|auto), overflow-x, overflow-y
+
+    margin and padding - values given in 4 ways
+        value1 - all side
+        vertical horizontal
+        top horizontal bottom
+        top right bottom left
+    
+    font-style: (normal | italic)
+    font-weight: (normal | bold)
+    font-size: size
+    font-family: "primary font", backupfont, ...
+    font: style weight size(must) family(must)
+    
+    text-align - align the text ex: text-align:center
+    line-height - distance between two lines
+    letter-spacing
+    text-shadow: h-shadow v-shadow blur-radius(optional) (color|none|initial|inherit)(optional) - sets a drop shadow on the text inside an element
+    text-decoration: (overline|underline|line-through|underline overline) style(optional) color(optional)
+
+CSS pseudo class:
+    :hover
+    :nth-child(formula) - formula values (odd | even | number | expression(ex:2n+1))
+    
+CSS layouts: 
+    float: (left|right) - used in individual element to float - block elements became wrapped
+    clear: (left|right|both) - used in individual element align the next element to float below
+        overflow: auto - used in parent container to avoid misborder around image element example in w3school
+        recommended techniques:  #container::after{content:"";clear:both;display:table;}
+
+    flexbox:
+        mainaxis - direction of flex items
+        crossaxis - perpendicular direction of flex items
+        parent element(flex container) properties:
+            display:flex;
+            flex-flow: direction wrap;
+                flex-direction: (row | column | row-reverse(right to left) column-reverse(bottom to top) )
+                flex-wrap: (wrap(break items into multiple line) | nowrap(forced to single line) | wrap-reverse(wrap but reverse row when flex direction column and vice versa) )
+            align-items: (strect(default) | flex-start | flex-end | center) - align vertically items i.e in cross axis
+            justify-content: (flex-start(default) | flex-end | center | space-around | space=between) - align horizontally i.e in main axis
+            align-content: (align-items values | space-around | space-between  | space-evenly) - for multiline flex items
+            
+
+        child element(flex items) properties:
+            order: proportionvalue
+            flex: 
+                one value - (grow/basis)
+                two value - grow (shrink/basis)
+                three values - grow shrink basis
+                flex-grow: proportionvalue(default=0) - how much the item grow to fill empty space, it will grow only if there is empty space
+                flex-shrink: proportionvalue(default=1) -  how much the item shrink, it will
+                flex-basis: size - initial length of item i.e when there are little items in container, this item expand to basis size. but when there are more item, it will shrink compared to other width size of item
+            align-self - override align items property
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+CSS techniques:
+    centering anything horizontally:
+        display: block;
+        margin: 0 auto;
+
+    use google fonts and icons:
+        fonts - copy link tag with url of a font and declare it in font-family
+        icons - copy link tag with url of a icon and then use it with the specified span tag
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+CSS startup:
+    terms:
+        selector - ex: p{}
+        property - ex: color
+        property value - ex: red
+        declaration - ex: color:red;
+        ruleset - ex: p{color:red;}
+    to implement CSS, there are 3 ways:
+        external css - <link href="" rel="stylesheet">
+        internal css - <head><style> ... </style></head>
+        inline css - <p style="property:value;property:value;... ">..</p> 
+    cross compatibility:
+        -webkit is used - a webkit is rendering engine in browser(Safari - apple) , chrome, edge uses blink engine( a fork of webkit)
+        -moz is used for mozilla  firefox browser
+
+CSS types of selector:
+    element selector - ex: p
+    id selector - ex: #id1
+    class selector - ex: .classname1
+    attribute selector - ex:
+        a[title]
+        a[href="https://www.google.com"]
+    pseudo-class selector - based on states of an element - ex:
+        a:hover
+    pseudo-elements selector - selects certain part of the element - ex:
+        p::first-line
+    combinators - ex:
+        article > p - select p tag which is a direct children of article tag
+    element with specific class and id:
+        div.active
+        div#container
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------

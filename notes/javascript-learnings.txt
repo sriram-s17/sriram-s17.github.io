@@ -1,0 +1,101 @@
+// - single line comment
+/* .. */ - multi line comment
+
+javascript methods and properties:
+    methods:
+        alert("msg") - gives a alert box with message
+        prompt("msg") -  display a alert box with input field
+        window.onload = function(){} or onload = function(){} - executes after document loaded
+        console.log("message", variable) - returns 'message variablevalue', console.log("msg"+ var) - returns concatenation of both
+        elemntvar = document.querySelector("") - returns Element object
+        elemntvar.getAttribute("attrname")  - returns value of the attribute
+        elemntvar.setAttribute("attrname", value) -  set the value to a attribute
+        elemntvar.addEventListener("eventname", function(){});
+        elemntvar.onclick = function(){}
+
+    properties:
+        elemntvar.textContent - sets text content - Node interface property
+        elemntvar.offsetHeight - get height of a element
+        elemntvar.offsetTop - get top position of a element
+
+javascript events: (addEventListener method is used)
+    DOMContentLoaded
+    click
+
+
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+About javascript:
+    javascript's official name is ECMAscript. there are many version like ES1, ES2..ES6, ES2017,.. ES2023.
+    In which ES6 is a major update, from which arrow functions, modules, classes are introduced.
+
+    javascript engines:
+        it is a interpreter bcoz javascript is scripting language, does not need a additional stage compiling.
+        It is developed by individual web browser. mozilla - spidermonkey, chrome - v8( which is also used in nodejs, edge), apple - javascriptcore/squirrelFish/Nitro from webkit 
+    
+    javascript is dynamic(i.e all type of value can be assigned to variables) and is weakly typed(i.e we can concatenate a number to a string without errors bcoz number is converted to string)
+
+javascript basics:
+    variables:
+        let, var, const are used. ex: let name;
+        let - blockscoped, const - blockscoped, whereas var - local and global scoped
+        naming rules:
+            start with underscore, alphabets, or $ sign, then use numbers and also we can use unicode characters
+    
+    Datatypes:
+        primitive types - all types except object - 
+            null - (absence of object - so typeof(null) returns objects) - it is less used, 
+            undefined - (absence of value - typeof(undefined) returns undefined) - it is mostly used, a variable declaration and return without value is undefined, 
+            numbers, 
+                - Number.MIN_VALUE,  Number.MAX_VALUE, console.log(4/0) - return Infinity word but number type
+            string, 
+            boolean - (true, false), 
+            Symbol - a=Symbol() - it is unique for each time , used with object. typeof return symbol
+            In the above types, all have object wrapper which provides methods except null and undefined
+        object - (a={name:"abc",age:20}), function is also a object 
+            date
+            array - a=[1,2,3]
+            JSON - a = {"name":"abc"}
+            etc. like maps, sets,
+
+        type coercion - 123  + '1' return 1231 - use of another data type instead of actual data type
+
+        typeof(NaN) - number
+        NaN==NaN - false
+        null==undefined - true, null===undefined - false
+        console.log(varname) - returns value of it
+        typeof(varname) -  return datatype
+
+    Operators:
+        +, -, *, /, =, != (not equality), ==  (equality), === (strict equality- checks first type then value), ! (logical not)
+        
+    conditionals:
+        if(){ 
+        }
+        else{
+        }
+
+    functions:
+        function funcname(){
+            return(optional)
+        }
+        querySelector - also a function
+
+    terms or DOM API features:
+        methods - ex: querySelector()
+        properties - ex: textContent
+    
+    script loading strategies:
+        <script src=" ">...</script> at before the </body> tag - but doesn't asynchronously load your script it is loaded only after HTML DOM is created so with larger javascript files, the site may be slowed down.
+        using DOMContentLoaded event in addEventListener
+        async in script - loads all scripts asynchronously but execute immediately after finished loading and cannot execute scripts in order - recommended for non dependent scripts
+        defer in script - works for external script only - loads all scripts asynchronously and execute after DOM loaded and execute all script in order
+    
+javascript features:
+        use arrow function '()=>{}' instead of 'function(){}' - it is called anonymous function
+        ; - used to end a statement but it is optional , it is required when multiple statement on a single line
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

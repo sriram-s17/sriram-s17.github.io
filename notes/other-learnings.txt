@@ -1,0 +1,57 @@
+origin - specifies scheme or protocol(http), domain and port
+security on the web:
+    same origin policy:
+        - cross origin embedding(image, video, iframe,etc.) writes(llinks, redirects and form submissions) allowed
+        - but cross origin read is not allowed but leaked by embedding
+        to allow cross origin, we can use CORS(cross origin resource sharing) headers in http headers which is configured in server to allow cross origin
+
+API:
+    a interface to offers services of a software to other software
+    simply defines, it is used to interact with softwares by other softwares
+
+Web APIs:
+    it is collection of APIs in browsers
+    web browser api is lowest one and DOM API is the higher level one
+    most APIs, including DOM API is written in javascript based on W3C specifications by browsers
+    the DOM API contains the interfaces which in turn contains methods and properties
+
+DOM(Document Object Model)
+    DOM is built in web browsers not javascript
+
+    It is a tree structure representation of HTML or XML documents. it is also called as data representation of objects where each object is a part of a document
+    That tree structure is called DOM tree. 
+    
+    Nodes and objects:
+        the tree have branches. each branches ends with a node. each node contains object.
+        In technical we say, the DOM tree contains nodes and a node contain single object.
+
+    DOM is used as a interface to interact with the web page by javascript or other programming languages
+    DOM API provides methods and properties to access the objects to change its content, style, structure, etc.
+
+    intro to DOM interface:
+        DOM contain many interfaces. the interface provides methods and properties and also many interfaces inherits others interfaces
+        In general in java, an interface is collection of properties and methods declaration which is implmented in class
+    
+    As DOM contains objects, each is a different type like document, node, element, attr, etc. which all are called interfaces.
+    and so the object is a instance of interface
+
+DOM interfaces:
+    https://dev.to/eteimz/the-dom-interfaces-5eon
+    https://developer.mozilla.org/en-US/docs/Web/API
+
+    document object - first object in web page content
+    Document interface - provides methods and properties for the document object that is the entire page
+    node - every object in a document is node like element, attribute, content and eventlisteners
+
+    inheritance order of interfaces:
+        EventTarget (used for eventlisteners, etc)
+            |   |
+            |   |> Window (innerwidth height of windows)
+            |
+            |> Node (manages child,textContent, etc )
+                |    |
+                |    |> Document (querySelector, createElement, etc.)
+                |
+                |> Element (children, innerHTML, etc.)
+                    |
+                    |> HTMLElement (HTMLImageElement, HTMLButtonElement, etc.)
