@@ -1,27 +1,38 @@
-notes:
-    about inline elements
-        - it has padding in all sides but top and bottom doesnt take real space. but when we border it, the border also covers takes top and bottom padding
-        but it is collapsed with other elements. margin only take left and right space, it doesnt take top and bottom space like padding.
+contents:
+    - css responsiveness
+    - css properties and values
+    - css pseudo class
+    - css layouts
+    - css media query
+    - css techniques
+    - css basics
+    - css types of selector
 
-        - width and height does not work in it
-    
-    about block element:
-        - width:% can be used to alter its width so next element appear right to it
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 CSS responsiveness:
-    meta viewport is used to set width of the page to maximum of device width. if it is not set then width is set to large size in mobile device
+    meta viewport is used to set width of the page to maximum of device width. if it is not set then width is set to large size in mobile device. and also if it is not defined, media query will not work
 
     There is a concept that physical pixel and logical pixel. physical pixel is the true resolution of a device screen.
     while logical pixel is combination of more physical pixel to display as 1 pixel bcoz to support same size in all mobile devices.
     devicePixelRatio is used to check ratio relation between them
 
     units:
-        absolute units: px, cm, mm, in, pt
+        absolute units: px, cm, mm, in, pt - appears same in all devices.
         relative units: 
             em(1 times my parent element's font-size) - it is relative to parent but fixed on all screen if parent font-size is fixed
             rem(root element's font-size) 
             vw, vh, (1% of viewport) change pixel according to screen viewport size
             %
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+notes:
+    about inline elements
+        - padding - takes all sides space but top and bottom doesnt take real space. but border covers all 4 side padding but it is collapsed with other elements
+        - margin - only takes left and right space,
+        - width and height does not work in it
 
 CSS properties and values:
     /* ... */ - comment
@@ -29,15 +40,17 @@ CSS properties and values:
     scroll-behavior: (auto|smooth)
     cursor: (pointer | progress | move | col-resize | etc.)
 
-    display: (block | inline | none) - sets the display mode of an element
+    display: (block | inline | none | inline-block(show as inline but have width and height properties)) - sets the display mode of an element
     visibility: (hidden | visible) - hide or show element but takes space even when it is hidden but display:none removes the element, dont take any space
     width : size(px, em, %)
     height : size
     background-color : color - the color behind an element's content and padding
     color : (rgb(0,0,0) | rgba(0,0,0,0.1) | colorname | #000(hexcode) )
     border : size(px,em) style color
-    box-sizing:(border-box|content-box(default)) - width/height+border+padding=actual width/height - if border-box, then actual width = width
-    
+    border-radius : size - like padding and margin we can give values in four ways
+    box-sizing:(border-box|content-box(default)) - in content box, width/height we set+border+padding=actual width/height - if border-box, then actual width = width we set
+    box-shadow: x y blur(optional) color(optional)
+
     position: (static(default)|relative|absolute|fixed|sticky)
         top, bottom, left, right - size is used to position element
     z-index:(numbervalue) - used to set overlap layer position - used for position and flex properties
@@ -63,8 +76,10 @@ CSS properties and values:
 
 CSS pseudo class:
     :hover
-    :nth-child(formula) - formula values (odd | even | number | expression(ex:2n+1))
-    
+    :nth-child(formula) - formula values = (odd | even | number | expression(ex:2n+1))
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 CSS layouts: 
     float: (left|right) - used in individual element to float - block elements became wrapped
     clear: (left|right|both) - used in individual element align the next element to float below
@@ -91,9 +106,26 @@ CSS layouts:
                 two value - grow (shrink/basis)
                 three values - grow shrink basis
                 flex-grow: proportionvalue(default=0) - how much the item grow to fill empty space, it will grow only if there is empty space
-                flex-shrink: proportionvalue(default=1) -  how much the item shrink, it will
+                flex-shrink: proportionvalue(default=1) -  how much the item will shrink, when there are more items
                 flex-basis: size - initial length of item i.e when there are little items in container, this item expand to basis size. but when there are more item, it will shrink compared to other width size of item
             align-self - override align items property
+        
+        in flex, the width/height is adjusted but not margin and padding
+        if flexdirection is column, and we set height but set width using flex basis, the height does not work. but if we use width property for width, it works
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+CSS media query:
+    @media <device> and <orientation> and <width>{}
+    
+    @media print{}  - for styling in print device
+    @media screen{} - for styling in screen - it is mostly used    
+    @media print and (orientation:landscape){}  - for styling in print device and landscape orientation
+    screen-width - it will not work, if we don't define viewport meta tag
+        max-width   - if screen size is 0 to max-width we set, this css will apply
+        min-width   - min-width size and above its size, this css will apply
+
+    @media screen and (max-width:600px){}   - for styling screen if it is less than 600px
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
 CSS techniques:
@@ -104,9 +136,14 @@ CSS techniques:
     use google fonts and icons:
         fonts - copy link tag with url of a font and declare it in font-family
         icons - copy link tag with url of a icon and then use it with the specified span tag
+    
+    for use hovering effects on mouse pointer device
+        @media (hover:hover){
+            ...
+        }
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------
-CSS startup:
+CSS basics:
     terms:
         selector - ex: p{}
         property - ex: color
@@ -137,5 +174,5 @@ CSS types of selector:
     element with specific class and id:
         div.active
         div#container
-
+    * - to select all elements
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------

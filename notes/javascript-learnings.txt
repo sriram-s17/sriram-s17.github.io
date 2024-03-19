@@ -5,25 +5,69 @@ javascript methods and properties:
     methods:
         alert("msg") - gives a alert box with message
         prompt("msg") -  display a alert box with input field
-        window.onload = function(){} or onload = function(){} - executes after document loaded
         console.log("message", variable) - returns 'message variablevalue', console.log("msg"+ var) - returns concatenation of both
-        elemntvar = document.querySelector("") - returns Element object
+
+        window.onload = function(){} or onload = function(){} - executes after document loaded
+        window.onscroll = function(){} - triggers when we scroll
+        scrollY - returns top position of window
+        scrollX - returns left position of window
+        screen.height - return visible height of the screen
+        window.scrollTo(xcoordinate, ycoordinate) - scroll to specific x,y position in total window screen
+        window.scrollBy(x, y) - scroll only the specific horizontal/vertical length - can give negative values for upward/opposite movement
+        elemntvar.scrollIntoView()  - scroll to the element
+
+        anyvar = setInterval(callback, time(in ms)) - executes callback function after specific regular interval of time
+        clearInterval(anyvar)   - to stop the interval function
+
+        elemntvar = document.querySelector("can use css selectors") - returns Element object
         elemntvar.getAttribute("attrname")  - returns value of the attribute
         elemntvar.setAttribute("attrname", value) -  set the value to a attribute
+        elemntvar.classList.add("classname") | remove() | toggle()  - manages class name of a element
+
+        parentelemtvar.insertBefore(whichelementtwanttoinsert, atwhichelementbeforeinsert)
+        parentelemtvar.insertBefore(elementtoinsert, null) - insert the element at last
+        parentelemtvar.appendChild("elemnt") - append the elemnt to last of parent
+        elemntvar.closest("css selector") - finds specified parent by going up dom tree, if nothing find returns null
+        
         elemntvar.addEventListener("eventname", function(){});
+        elemntvar.addEventListener("event",(e)=>{
+            e.preventDefault();                         //prevent default behaviour of event of a element
+            e.target                                    //returns the clicked element
+        })
         elemntvar.onclick = function(){}
 
     properties:
-        elemntvar.textContent - sets text content - Node interface property
         elemntvar.offsetHeight - get height of a element
+        elemntvar.offsetWidth
         elemntvar.offsetTop - get top position of a element
+        elemntvar.offsetLeft
+            clientWidth, clientHeight, clientTop, clientLeft - returns width + padding but offset properties return full width, height, top, left
+        
+        elemntvar.innerHTML - specifies tags or text inside a element
+        elemntvar.textContent - gets or sets text content - Node interface property
+        elemntvar.style.<styleName> - set css properties in javascript
+        elemntvar.children[indexnumber] - return specific children of the element
+
+
+javascript functions:
+    listtype.forEach(function(eachitem){}) - listtype can be return of multiple elements
+    listtype.contains("listitem")   - listtype can be return of classList
+    math.floor(floatnumber)
+    number.toString()  -  convert a number to string data type
+    string.padStart(padsize, "specific string") - ex:(3, "0") -> output: if input "1" then "001", if input "1111" then "1111"
 
 javascript events: (addEventListener method is used)
     DOMContentLoaded
     click
 
+javasript techniques:
+    To find an click event happened outside an element:
+        document.addEventListener("click", function(event) { 
+            let target = event.target;
+            if(!target.closest("parentcssselector")){
 
-
+            }        
+        });
 
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

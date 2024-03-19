@@ -11,6 +11,7 @@ HTML elements:
     <head> - contains keywords, page description that appear in search results, css files, etc.
     <meta charset="utf-8"> - defines character set that this page uses. utf-8 contains mostly all written languages
     <title> - defines title for our page
+    <link> - for linking stylesheet
     <body> - inside which all contents to be showed are defined
 
     <header>
@@ -18,7 +19,7 @@ HTML elements:
     <main> - use it one per page. it contains the whole content of our page
         <section> - groups single part of the page. it contains headings ex: minimap, headline links, summaries.
         <article> - it includes related content but stands out its content on own ex: a single blog post
-        the section may contain multiple article inside and also vice versa
+                    the section may contain multiple article inside and also vice versa
         <div> - it is also like other block elements. but it is used only in non-semantic areas
         <aside> - provide additional content related to main page. 
     <footer>
@@ -28,3 +29,4 @@ HTML elements:
     <p> - paragraph tag make text in new line with some default margin
     <ul>,<ol>,<li>  - list tags
     <a href=""> - anchor tag for links, href=Hypertext Reference
+    <button>
